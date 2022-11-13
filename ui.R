@@ -33,9 +33,6 @@ shinyUI(fluidPage(
                  # coordinate panel
                  absolutePanel(id = 'coord_panel', top = 30, right = 8, width = 'auto',
                                pre(id = 'coords', '48.858132, 2.294515')),
-                 # clear map button (start hidden)
-                 absolutePanel(id = 'clear_panel', top = 30, left = 510, width = 'auto',
-                               actionButton('clear_map', label = 'Clear map', width = '100%')) %>% hidden(),
                  
                  # app help and information
                  popup_boxes(),

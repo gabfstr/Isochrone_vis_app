@@ -11,7 +11,7 @@
 #' 
 #' @return SpatialPolygonsDataFrame
 
-isoline = function(origin, departure, range, mode, app_id = '', app_code = '') {
+isoline = function(origin, departure, range, mode) {
     format_time = function(x, origin) {
         tz = tz_lookup_coords(str_split(origin, ',', simplify = TRUE)[1] %>% as.numeric(),
                               str_split(origin, ',', simplify = TRUE)[2] %>% as.numeric(), warn = FALSE)
@@ -21,6 +21,7 @@ isoline = function(origin, departure, range, mode, app_id = '', app_code = '') {
     formatted_departure = format_time(departure, origin)
     formatted_origin = str_split(origin,",")[[1]] %>% as.numeric()
     options(digits = 12)
+    print(formatted_origin)
     
     departure_search <-
       make_search(id = paste0("travel time from ",str(origin)),
@@ -40,20 +41,30 @@ isoline = function(origin, departure, range, mode, app_id = '', app_code = '') {
       lat<-append(lat,e$lat)
       lng<-append(lng,e$lng)
     }
+    print("")
+    print("resultat API : ")
+    print(result$contentParsed$results[[1]]$shapes[[i]]$shell)
+    print("")
+    print("Et en listé lat puis lng")
+    print(lat)
+    print(lng)
     
     poly_test = list(Polygon(as.matrix(data.frame(lng, lat)))) %>% Polygons(ID = 1)
     poly_test = list(poly_test)
     #poly_test =list(poly_test@Polygons)
-    #print(list(poly_test@Polygons[[1]]@coords))
+    print("")
+    print("Et sous poly")
+    #print(poly_test[[1]]@Polygons[[1]]@coords)
     
     
     df = data.frame('origin' = rep(origin, length(data)), 'departure' = rep(departure, length(data)),
     'range' = rep(range, length(data)))
-  
+    # comprendre cette ligne
     
     
-    data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')) %>%
-    smooth(method = 'ksmooth', smoothness = 3)
+    data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
+    #data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')) %>%
+    #smooth(method = 'ksmooth', smoothness = 3)
     
     print("spatial poly df")
     data = SpatialPolygonsDataFrame(data, data = df, match.ID = FALSE)

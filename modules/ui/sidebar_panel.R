@@ -36,13 +36,7 @@ sidebar_panel = function() {
                                                    selected = 'driving', justified = TRUE, size = 'normal'),
                  help = 'This option controls the mode type. Possible values are driving (car), public_transport (Bus, Subway), cycling (bicycle)  or walking (pedestrian).',
                  margin = 8),
-        # range type ###################################################################################################
-        input_ui(input_id = 'range_type',
-                 input_element = radioGroupButtons('range_type', label = 'Range type:',
-                                                   choices = c('Time (minutes)', 'Distance (miles)'),
-                                                   selected = 'Time (minutes)', justified = TRUE),
-                 help = paste0('Specifies type of range. Possible values are distance or time. For distance the unit ',
-                               'is miles. For time the unit is minutes.'), margin = 8),
+        
         # range ########################################################################################################
         div(style = inline_block_css(),
             column(5, style = 'padding-left: 0',
@@ -61,9 +55,11 @@ sidebar_panel = function() {
         # step #########################################################################################################
         input_ui(input_id = 'step',
                  input_element = numericInput('step', label = 'Interval size:', min = 1, step = 1, value = 5),
-                 help = paste0('Interval size between each isoline. For distance the unit is miles. For time the unit ',
+                 help = paste0('Interval size between each isoline : the unit ',
                                'is minutes.')),
         actionButton('request', label = 'Request isolines', width = '100%'),
-        downloadButton('download', label = 'Download results', class = list(width = '100%')) %>% hidden()
+        downloadButton('download', label = 'Download results', class = list(width = '100%')) %>% hidden(),
+        # clear map button (start hidden)
+        actionButton('clear_map', label = 'Clear map', width = '100%') %>% hidden()
     )
 }

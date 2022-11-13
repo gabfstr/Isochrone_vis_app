@@ -30,7 +30,7 @@ shinyServer(function(input, output, session) {
   # display lat/lng on map load
   js_code = 'function(el, x) {
                     this.addEventListener("mousemove", function(e) {
-                        document.getElementById("coords").innerHTML = e.latlng.lat.toFixed(6) + ", " + e.latlng.lng.toFixed(6);
+                        document.getElementById("coords").innerHTML = e.latlng.lat.toFixed(9) + ", " + e.latlng.lng.toFixed(9);
                     })
                 }'
   
@@ -57,8 +57,8 @@ shinyServer(function(input, output, session) {
   
   # map click ########################################################################################################
   observeEvent(input$map_click, {
-    lat = round(input$map_click$lat, 6)
-    lng = round(input$map_click$lng, 6)
+    lat = round(input$map_click$lat, 9)
+    lng = round(input$map_click$lng, 9)
     updateTextInput(session, 'origin', value = paste0(lat, ', ', lng))
   })
   
@@ -107,13 +107,18 @@ shinyServer(function(input, output, session) {
       mode = switch(input$mode, 'driving' = 'driving', 'public_transport'='public_transport', 'cycling'='cycling','walking' = 'walking')
       isoline_sequence = seq(input$min, input$max, input$step) * 60 %>% sort()
       unit = ' minutes'
-      
+      print("")
+      print("ISOLINE SEQUENCE")
+      print(isoline_sequence)
+      print("")
       layers = sapply(1:length(isoline_sequence), function(x) {
         progress$status$inc(amount = 1/length(isoline_sequence),
                             message = paste0('Processing request ', x, ' of ', length(isoline_sequence)))
         isoline(str_remove(input$origin, ' '), departure = departure,
-                range = isoline_sequence[x], mode = mode, app_id = keys$app_id, app_code = keys$app_code)
+                range = isoline_sequence[x], mode = mode)
       })
+      print("Layers")
+      print(layers)
 ############################################################
 ## Need to return layers being a spatial polygons Dataframe
       # Use code in global.r to get result df
@@ -150,7 +155,7 @@ shinyServer(function(input, output, session) {
                                             paste0(cuts[-n], cuts[-1])
                                           })
         results$data[[length(results$data) + 1]] = layers
-        shinyjs::show('clear_panel')
+        shinyjs::show('clear_map')
         shinyjs::show('download')
       } else {
         request_error = layers[sapply(layers, class) != 'SpatialPolygonsDataFrame'] %>% unlist() %>% unique()

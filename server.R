@@ -30,7 +30,7 @@ shinyServer(function(input, output, session) {
   # display lat/lng on map load
   js_code = 'function(el, x) {
                     this.addEventListener("mousemove", function(e) {
-                        document.getElementById("coords").innerHTML = e.latlng.lat.toFixed(9) + ", " + e.latlng.lng.toFixed(9);
+                        document.getElementById("coords").innerHTML = e.latlng.lat.toFixed(6) + ", " + e.latlng.lng.toFixed(6);
                     })
                 }'
   
@@ -57,8 +57,8 @@ shinyServer(function(input, output, session) {
   
   # map click ########################################################################################################
   observeEvent(input$map_click, {
-    lat = round(input$map_click$lat, 9)
-    lng = round(input$map_click$lng, 9)
+    lat = round(input$map_click$lat, 6)
+    lng = round(input$map_click$lng, 6)
     updateTextInput(session, 'origin', value = paste0(lat, ', ', lng))
   })
   

@@ -40,10 +40,10 @@ sidebar_panel = function() {
         # range ########################################################################################################
         div(style = inline_block_css(),
             column(5, style = 'padding-left: 0',
-                numericInput('min', label = 'Minimum range:', min = 1, step = 1, value = 5)
+                numericInput('min', label = 'Minimum range:', min = 1, step = 1, value = 20)
             ),
             column(5, style = 'padding-left: 0; margin-left: 12px;',
-                numericInput('max', label = 'Maximum range:', min = 1, step = 1, value = 30)
+                numericInput('max', label = 'Maximum range:', min = 1, step = 1, value = 35)
             ),
             column(1, style = 'margin-top: 4px; margin-left: 12px;',
                 br(),

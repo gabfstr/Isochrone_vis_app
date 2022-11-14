@@ -28,7 +28,8 @@ isoline = function(origin, departure, range, mode) {
                   departure_time = formatted_departure,
                   travel_time = range,
                   coords = list(lat = formatted_origin[1], lng = formatted_origin[2]),
-                  transportation = list(type = mode)
+                  transportation = list(type = mode),
+                  single_shape=TRUE
                   )
     
     result <- time_map(departure_searches = departure_search)

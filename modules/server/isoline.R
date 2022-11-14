@@ -29,7 +29,8 @@ isoline = function(origin, departure, range, mode) {
                   travel_time = range,
                   coords = list(lat = formatted_origin[1], lng = formatted_origin[2]),
                   transportation = list(type = mode),
-                  single_shape=TRUE
+                  single_shape=TRUE,
+                  level_of_detail=list(scale_type='simple', level='medium')
                   )
     
     result <- time_map(departure_searches = departure_search)
@@ -42,32 +43,31 @@ isoline = function(origin, departure, range, mode) {
       lat<-append(lat,e$lat)
       lng<-append(lng,e$lng)
     }
-    print("")
-    print("resultat API : ")
-    print(result$contentParsed$results[[1]]$shapes[[i]]$shell)
-    print("")
-    print("Et en listé lat puis lng")
-    print(lat)
-    print(lng)
+
     
     poly_test = list(Polygon(as.matrix(data.frame(lng, lat)))) %>% Polygons(ID = 1)
     poly_test = list(poly_test)
     #poly_test =list(poly_test@Polygons)
-    print("")
-    print("Et sous poly")
     #print(poly_test[[1]]@Polygons[[1]]@coords)
+    #print(st_area(poly_test[[1]]@Polygon))
+    
     
     
     df = data.frame('origin' = rep(origin, length(data)), 'departure' = rep(departure, length(data)),
     'range' = rep(range, length(data)))
-    # comprendre cette ligne
-    
+
     
     data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
     #data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')) %>%
     #smooth(method = 'ksmooth', smoothness = 3)
     
-    print("spatial poly df")
     data = SpatialPolygonsDataFrame(data, data = df, match.ID = FALSE)
+  
+
+    df = data.frame('origin' = rep(origin, length(data)), 'departure' = rep(departure, length(data)),
+                    'range' = rep(range, length(data)), 'area_m2'=rep(areaPolygon(data),length(data)))
+    data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
+    data = SpatialPolygonsDataFrame(data, data = df, match.ID = FALSE)
+    
     return(data)
 }

@@ -18,7 +18,7 @@ library(lubridate)
 library(smoothr)
 library(sf)
 library(viridis)
-
+library(geosphere)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
@@ -107,18 +107,12 @@ shinyServer(function(input, output, session) {
       mode = switch(input$mode, 'driving' = 'driving', 'public_transport'='public_transport', 'cycling'='cycling','walking' = 'walking')
       isoline_sequence = seq(input$min, input$max, input$step) * 60 %>% sort()
       unit = ' minutes'
-      print("")
-      print("ISOLINE SEQUENCE")
-      print(isoline_sequence)
-      print("")
       layers = sapply(1:length(isoline_sequence), function(x) {
         progress$status$inc(amount = 1/length(isoline_sequence),
                             message = paste0('Processing request ', x, ' of ', length(isoline_sequence)))
         isoline(str_remove(input$origin, ' '), departure = departure,
                 range = isoline_sequence[x], mode = mode)
       })
-      print("Layers")
-      print(layers)
 ############################################################
 ## Need to return layers being a spatial polygons Dataframe
       # Use code in global.r to get result df
@@ -128,6 +122,8 @@ shinyServer(function(input, output, session) {
       # how to plot holes ?
 ## Then change other parts of the code to get different inputs for example
 ############################################################
+      
+      print(layers[[1]]@data$area_m2)
       
       if(all(sapply(layers, class) == 'SpatialPolygonsDataFrame')) {
         ###### Colors picked randomly ?

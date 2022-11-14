@@ -49,7 +49,7 @@ sidebar_panel = function() {
                 br(),
                 actionButton('range_help', NULL, icon = icon('question', lib = 'font-awesome')),
                 bsPopover('range_help', placement = 'right', trigger = 'focus', title = NULL,
-                          content = 'Range of isoline. For distance the unit is miles. For time the unit is minutes.')
+                          content = 'Range of isoline. The unit is minutes.')
             )
         ),
         # step #########################################################################################################

@@ -133,8 +133,8 @@ shinyServer(function(input, output, session) {
                                               opacity = 0.6, fillOpacity = 0.3, fillColor = colors[x],
                                               smoothFactor = 0,
                                               highlightOptions = highlightOptions(weight = 3),
-                                              popup = paste0(seq(input$min, input$max, input$step)[x],
-                                                             unit),
+                                              popup = paste0("Range : ",seq(input$min, input$max, input$step)[x],
+                                                             " minutes<br>Area : ",round(layers[[x]]@data$area_m2/10^6,3)," km^2"),
                                               popupOptions = popupOptions(closeButton = FALSE,
                                                                           closeOnClick = TRUE))
         })

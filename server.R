@@ -123,7 +123,7 @@ shinyServer(function(input, output, session) {
 ## Then change other parts of the code to get different inputs for example
 ############################################################
       
-      print(layers[[1]]@data$area_m2)
+      #print(layers[[1]]@polygons)
       
       if(all(sapply(layers, class) == 'SpatialPolygonsDataFrame')) {
         ###### Colors picked randomly ?

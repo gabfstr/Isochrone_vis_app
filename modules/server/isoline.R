@@ -21,24 +21,23 @@ isoline = function(origin, departure, range, mode) {
     formatted_departure = format_time(departure, origin)
     formatted_origin = str_split(origin,",")[[1]] %>% as.numeric()
     options(digits = 12)
-    print(formatted_origin)
     
     departure_search <-
-      make_search(id = paste0("travel time from ",str(origin)),
+      make_search(id = paste0("travel time from ",origin),
                   departure_time = formatted_departure,
                   travel_time = range,
                   coords = list(lat = formatted_origin[1], lng = formatted_origin[2]),
                   transportation = list(type = mode),
                   #single_shape=TRUE,
-                  level_of_detail=list(scale_type='simple', level='low')
+                  level_of_detail=list(scale_type='simple', level='medium')
                   )
     
     result <- time_map(departure_searches = departure_search)
     
-    print(paste0("Length de shape : ",length(result$contentParsed$results[[1]]$shapes)))
-    
     poly_test<-c()
-    for(i in 1:length(result$contentParsed$results[[1]]$shapes)){
+    nb_shapes <- length(result$contentParsed$results[[1]]$shapes)
+    
+    for(i in 1:nb_shapes){
       #rajouter boucle sur i for pour les ilots
       lat<-c()
       lng<-c()
@@ -52,23 +51,21 @@ isoline = function(origin, departure, range, mode) {
     #print(poly_test[[1]]@Polygons[[1]]@coords)
     #print(st_area(poly_test[[1]]@Polygon))
     }
-    print("poly_test : ")
-    print(poly_test)
+    
     
     df = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)),
     'range' = rep(range, length(poly_test)))
 
     
-    print(length(poly_test))
     data1 = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
-    #data = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')) %>%
-    #smooth(method = 'ksmooth', smoothness = 3)
+    # %>% smooth(method = 'ksmooth', smoothness = 3)
     
     data2 = SpatialPolygonsDataFrame(data1, data = df, match.ID = FALSE)
-
+    
+    area_islands=round(areaPolygon(data2)/10^6,3)
     
     df2 = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)),
-                    'range' = rep(range, length(poly_test)), 'area_m2'=areaPolygon(data2))
+                    'range' = rep(range, length(poly_test)), 'area_km2'=area_islands, 'total_area'=rep(sum(area_islands),length(poly_test)))
     data3 = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
     data3 = SpatialPolygonsDataFrame(data3, data = df2, match.ID = FALSE)
     

@@ -98,7 +98,7 @@ shinyServer(function(input, output, session) {
 ############################################################
 ## Code a modif pour iso
 ############################################################
-    
+   
     if(is_valid) {
       
       progress$status$set(message = 'Requesting...')
@@ -134,7 +134,7 @@ shinyServer(function(input, output, session) {
                                               smoothFactor = 0,
                                               highlightOptions = highlightOptions(weight = 3),
                                               popup = paste0("Range : ",seq(input$min, input$max, input$step)[x],
-                                                             " minutes<br>Area : ",round(layers[[x]]@data$area_m2/10^6,3)," km^2"),
+                                                             " minutes<br>Island area : ",layers[[x]]@data$area_km2," km^2<br>Total Area : ",layers[[x]]@data$total_area, " km^2"),
                                               popupOptions = popupOptions(closeButton = FALSE,
                                                                           closeOnClick = TRUE))
         })

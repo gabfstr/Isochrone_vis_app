@@ -34,6 +34,7 @@ shinyUI(fluidPage(
                  absolutePanel(id = 'coord_panel', top = 30, right = 8, width = 'auto',
                                pre(id = 'coords', '48.858132, 2.294515')),
                  
+        
                  # app help and information
                  popup_boxes(),
                  

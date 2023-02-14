@@ -33,27 +33,27 @@ popup_boxes = function() {
                 h2('About this application'),
                 hr(),
                 div(style = 'display: inline-block; vertical-align: bottom; min-width: 100%;',
-                   column(6, style = 'padding-left: 0',
+                   column(12, style = 'padding-left: 0',
                         h4('Data source', style = 'margin-top: 0;'),
                         tags$span('This application sends requests to the ', 
-                                  tags$a('HERE Isolines API.',href = paste0('https://developer.here.com/',
-                                                                            'documentation/routing/topics/resource-',
-                                                                            'calculate-isoline.html'),
+                                  tags$a('TRAVELTIME isochrone API.',href = paste0('https://traveltime.com/features/isochrones'),
                                                                             target = '_blank'),
                                   'Responses are then post-processed before displaying on the map.',
                                   style = 'font-size: 14px;'),
                             h4('Application author', style = 'margin-top: 10px;'),
-                            tags$span('Hi, I\'m ',
-                                      tags$a('Bethany Yollin!', href = 'https://www.linkedin.com/in/bethanyyollin/',
+                            tags$span('Hi,we are',
+                                      tags$a('Gabriel Fiastre', href = 'https://www.linkedin.com/in/gabriel-fiastre-4b5085184/',
                                       target = '_blank'),
-                                      'I am a data scientist working in the transportation industry. With a background \
-                                      in geography and applied mathematics, I enjoy developing fun and informative \
-                                      interactive web mapping applications.', style = 'font-size: 14px;')
+                                      ' & ',
+                                      tags$a('Shane Hoeberichts', href = 'https://www.linkedin.com/in/shane-hoeberichts-b249001b8/',
+                                             target = '_blank'),
+                                      'We are Machine learning & applied statistics students (M2 MASH) at Paris Dauphine & ENS. 
+                                      This shiny app was part of a data visualization project.', style = 'font-size: 14px;')
                     ),
-                    column(6,
-                        img(src = 'here.png', style = 'height: 250px; display: block; margin-bottom: 20px; \
-                                                      margin-right: auto; margin-left: auto;')
-                    )
+                    #column(6,
+                    #    img(src = 'travelTime_color.png', style = 'align:middle;height: 50px; display: block; margin-top:25%; \
+                    #                                  margin-right: auto; margin-left: auto;')
+                    #)
                 )
             )
         )

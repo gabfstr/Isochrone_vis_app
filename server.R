@@ -93,8 +93,8 @@ shinyServer(function(input, output, session) {
 
     
     # validate inputs
-    #is_valid = validate_inputs(session, input$origin, input$departure, input$min, input$max, input$step)
-    is_valid=TRUE
+    is_valid = validate_inputs(session, input$origin, input$departure, input$min, input$max, input$step)
+    #is_valid=TRUE
     
 ############################################################
 ## Code a modif pour iso

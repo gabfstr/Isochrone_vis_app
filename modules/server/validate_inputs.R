@@ -13,7 +13,7 @@
 
 validate_inputs = function(session, origin, departure, min, max, step) {
     is_valid = FALSE
-    if(!all(is.null(keys$app_id) & is.null(keys$app_code))) {
+    if(!all(is.null(keys["id"]) & is.null(keys["key"]))) {
         if(validate_coords(origin)) {
             if(!is.null(departure)) {
                 isoline_sequence = try(seq(seq(min, max, step)), silent = TRUE)

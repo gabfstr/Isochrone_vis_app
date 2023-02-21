@@ -1,3 +1,7 @@
+########### WHEN RUNNING FOR THE FIRST TIME
+# install.packages(RJSONIO)
+# install.packages(traveltimeR)
+
 library(RJSONIO)
 library(traveltimeR)
 

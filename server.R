@@ -7,6 +7,25 @@
 #    http://shiny.rstudio.com/
 #
 
+
+########### WHEN RUNNING FOR THE FIRST TIME
+
+# install.packages(shiny)
+# install.packages(traveltimeR)
+# install.packages(leaflet)
+# install.packages(sp)
+# install.packages(htmlwidgets)
+# install.packages(stringr)
+# install.packages(lutz)
+# install.packages(lubridate)
+# install.packages(smoothr)
+# install.packages(sf)
+# install.packages(viridis)
+# install.packages(geosphere)
+# install.packages(AlphaPart)
+# install.packages(rgdal)
+# install.packages(readr)
+
 library(shiny)
 library(traveltimeR)
 library(leaflet)

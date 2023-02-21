@@ -56,8 +56,8 @@ isoline = function(origin, departure, range, mode) {
     #angle : bearing()
     
     
-    df = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)),
-    'range' = rep(range, length(poly_test)))
+    df = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)), 
+                    'mode'=rep(mode, length(poly_test)),'range' = rep(range, length(poly_test)))
 
     
     data1 = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
@@ -69,7 +69,8 @@ isoline = function(origin, departure, range, mode) {
     
     
     df2 = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)),
-                    'range' = rep(range, length(poly_test)), 'area_km2'=area_islands, 'total_area'=rep(sum(area_islands),length(poly_test)))
+                    'mode'=rep(mode, length(poly_test)), 'range' = rep(range, length(poly_test)), 
+                    'area_km2'=area_islands, 'total_area'=rep(sum(area_islands),length(poly_test)))
     data3 = SpatialPolygons(poly_test, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'))
     data3 = SpatialPolygonsDataFrame(data3, data = df2, match.ID = FALSE)
     

@@ -7,6 +7,19 @@
 #    http://shiny.rstudio.com/
 #
 
+
+
+########### WHEN RUNNING FOR THE FIRST TIME
+
+# install.packages(shiny)
+# install.packages(shinyjs)
+# install.packages(shinyBS)
+# install.packages(shinyWidgets)
+# install.packages(shinythemes)
+# install.packages(shinycssloaders)
+# install.packages(dplyr)
+# install.packages(leaflet)
+
 library(shiny)
 library(shinyjs)
 library(shinyBS)

@@ -6,7 +6,7 @@ Isochrones delimit lines of equal travel time from an origin. They are important
 
 
 ## Usage
-To use the interactive map, run the server.R file. This will generate a window presenting a map and the user menu on the left, as seen in the picture below. 
+To use the interactive map, put your API key information (free from TravelTime website) in the api_keys.json file and run the server.R file. This will generate a window presenting a map and the user menu on the left, as seen in the picture below. 
 
 ![image](https://user-images.githubusercontent.com/73693706/220354645-8d04dccf-9ca8-4e46-a2bc-ffa989b5252c.png)
 

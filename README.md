@@ -28,5 +28,8 @@ The numerical results can also be downloaded using the download results button t
 
 ## Results
 
+The download results button allows the user to download a zip file that contains the numerical results of the generated isochrones. The zip file contains 4 files in different formats containing the polygons composing the isochrones, and an additional results file in csv format where each row represents a polygon composing an isochrone, with the isochrone ID, origin, associated time, transport mode used, area of the polygon and total area of the isochrone it is a part of.
+
+
 
 

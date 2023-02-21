@@ -67,7 +67,6 @@ isoline = function(origin, departure, range, mode) {
     
     area_islands=round(areaPolygon(data2)/10^6,3)
     
-    print(sum(area_islands))
     
     df2 = data.frame('origin' = rep(origin, length(poly_test)), 'departure' = rep(departure, length(poly_test)),
                     'range' = rep(range, length(poly_test)), 'area_km2'=area_islands, 'total_area'=rep(sum(area_islands),length(poly_test)))

@@ -20,12 +20,16 @@ library(sf)
 library(viridis)
 library(geosphere)
 library(AlphaPart)
+library(rgdal)
+library(readr)
+
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
   
   # reactive values
   results = reactiveValues(data = list())
+  statistics = reactiveValues(data_csv = data.frame())
   progress = reactiveValues(status = NULL)
   
   # display lat/lng on map load
@@ -154,6 +158,17 @@ shinyServer(function(input, output, session) {
         results$data[[length(results$data) + 1]] = layers
         shinyjs::show('clear_map')
         shinyjs::show('download')
+        
+        data_csv=data.frame()  
+        for (x in 1:length(layers)) {
+          y=layers[[x]]@data
+          y$layer=x
+          y$n_shapes=nrow(y)
+          data_csv=rbind(data_csv,y)
+        }
+        statistics$data_csv=data_csv
+        
+        
       } else {
         request_error = layers[sapply(layers, class) != 'SpatialPolygonsDataFrame'] %>% unlist() %>% unique()
         error_message(session, tags$span('Isoline API failed with the following error: ', request_error))
@@ -168,7 +183,10 @@ shinyServer(function(input, output, session) {
   })
   
   # download data ####################################################################################################
-  output$download = downloadHandler(filename = function() { paste('output', 'zip', sep = '.') },
+  
+
+  
+  output$download = downloadHandler(filename = function() { paste('results', 'zip', sep = '.') },
                                     content = function(f) {
                                       tmp = tempdir()
                                       old_shapefiles = list.files(tmp, pattern = '.*\\.(shp|dbf|prj|shx)$')
@@ -178,7 +196,14 @@ shinyServer(function(input, output, session) {
                                         writeOGR(out, dsn = tmp, layer = paste0('isochrone_', x), driver = 'ESRI Shapefile', overwrite = TRUE)
                                       })
                                       zip_files = list.files(tmp, pattern = '.*\\.(shp|dbf|prj|shx)$')
+
+                                      
+                                      path=file.path(tmp,"results.csv")
+                                      write_csv(data.frame(statistics$data_csv), file=path)
+
                                       zip_files = paste0(tmp, '/', zip_files)
+                                      zip_files = append(zip_files,path)
+
                                       zip(zipfile = f, files = zip_files, flags = '-j')
                                     },
                                     contentType = 'application/zip'

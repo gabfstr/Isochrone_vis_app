@@ -12,10 +12,10 @@ To use the interactive map, run the server.R file. This will generate a window p
 
 
 The menu allows the user to select 
-- the origin of the isochrone (latitude-longitude coordinates or by clicking on the map), 
-- the mode of transport (among driving, public transport, cycling, and walking),
--  the departure time (takes into account traffic and scheduled public transport), 
--  the times associated with the desired isochrones (minimum range representing the smallest isochrone, maximum the largest, and interval size the minute interval between these ranges for which the user wants isochrones). 
+- Origin of the isochrone (latitude-longitude coordinates or by clicking on the map), 
+- Mode of transport (among driving, public transport, cycling, and walking),
+- Departure time (takes into account traffic and scheduled public transport), 
+- Times associated with the desired isochrones (minimum range representing the smallest isochrone, maximum the largest, and interval size the minute interval between these ranges for which the user wants isochrones). 
 
 Once these parameters are set, use the request isolines button to generate the visualisation.
 

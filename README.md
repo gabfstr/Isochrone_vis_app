@@ -2,7 +2,7 @@
 
 ## Description
 
-Isochrones delimit lines of equal travel time from an origin. They are important to investigate how well connected a location is and have many applications, from improving transport networks to any location-based optimisation. This project presents a visualization tool that plots isochrones from an origin using a set of user-defined parameters. The isochrones are generated using the TravelTime API (https://traveltime.com/). 
+Isochrones delimit lines of equal travel time from an origin. They are important to investigate how well connected a location is and have many applications, from improving transport networks to any location-based optimisation. This project presents a visualization tool that plots isochrones from an origin using a set of user-defined parameters. The isochrones are generated using the TravelTime API (https://traveltime.com/). The visualization is largely inspired by byollin's work (https://github.com/byollin/Isolines), but uses an more precise API and provides additional data to the user such as the area of the isochrones.
 
 
 ## Usage
@@ -21,7 +21,7 @@ Once these parameters are set, use the request isolines button to generate the v
 
 This button will generate and plot the desired isochrones in relation to the defined parameters as seen in the image below. The area and associated time of each isochrone is visible when passing the mouse over it, as well as the area of the polygon under consideration (isochrones are often composed of multiple polygons due to some areas being inaccessible during the set time).
 
-- Image
+![image](https://user-images.githubusercontent.com/73693706/220373966-293b3597-e88c-47e8-a643-362681c73948.png)
 
 The numerical results can also be downloaded using the download results button that appears once the isochrones are generated. 
 

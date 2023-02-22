@@ -32,11 +32,12 @@ library(leaflet)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
     useShinyjs(),
-    theme = shinytheme('yeti'), 
-    title = 'Isochrone vis app', 
+    title='Isochrone vis app',
+    div(class = "title-panel","ISOCHRONE VISUALIZATION APP"),
+    #titlePanel('Isochrone vis app'), 
     windowTitle = 'ISOCHRONES',
-
-    tabPanel(title = 'IsoChrones',
+    theme = shinytheme('yeti'), 
+    tabPanel(title = 'Isochrones vis app',
              # map panel ########################################################################################################
              div(class = 'outer',
                  # additional css

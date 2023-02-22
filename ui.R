@@ -33,11 +33,10 @@ library(leaflet)
 shinyUI(fluidPage(
     useShinyjs(),
     theme = shinytheme('yeti'), 
-    title = div(id = 'isolines', 'Isolines'), 
-    id = 'navbar',
-    windowTitle = 'Isolines',
+    title = 'Isochrone vis app', 
+    windowTitle = 'ISOCHRONES',
 
-    tabPanel(title = ' ',
+    tabPanel(title = 'IsoChrones',
              # map panel ########################################################################################################
              div(class = 'outer',
                  # additional css

@@ -58,7 +58,7 @@ shinyServer(function(input, output, session) {
                     })
                 }'
   
-  # show the help popup on applicatio startup
+  # show the help popup on application startup
   toggleDropdownButton('help')
   
   # initialize map ###################################################################################################
@@ -120,7 +120,7 @@ shinyServer(function(input, output, session) {
     #is_valid=TRUE
     
 ############################################################
-## Code a modif pour iso
+## Isochrones computation
 ############################################################
    
     if(is_valid) {
@@ -138,19 +138,17 @@ shinyServer(function(input, output, session) {
                 range = isoline_sequence[x], mode = mode)
       })
 ############################################################
-## Need to return layers being a spatial polygons Dataframe
-      # Use code in global.r to get result df
-      # change the return value to spatial polygons well ordered
-## Find a solution for island and holes : 
-      # store islands and plot separately
-      # how to plot holes ?
-## Then change other parts of the code to get different inputs for example
+## Got response from API as a spatial polygons Dataframe
+## Layers for each range, for each layer mutliple shells 
+      # (isochrones with holes / islands)
+## Now display of the isochrnes on the map
 ############################################################
       
+      # To access an isochrone : 
       #print(layers[[1]]@polygons)
       
       if(all(sapply(layers, class) == 'SpatialPolygonsDataFrame')) {
-        ###### Colors picked randomly ?
+        # Colors
         colors = magma(length(layers), end = 0.8) %>% str_trunc(width = 7, side = 'right', ellipsis = '')
         sapply(length(layers):1, function(x) {
           leafletProxy('map') %>% addPolygons(data = layers[[x]], weight = 2, color = colors[x],
@@ -178,6 +176,7 @@ shinyServer(function(input, output, session) {
         shinyjs::show('clear_map')
         shinyjs::show('download')
         
+        # Storing extra statistics per isochrone
         data_csv=data.frame()  
         for (x in 1:length(layers)) {
           y=layers[[x]]@data
@@ -201,9 +200,8 @@ shinyServer(function(input, output, session) {
     progress$status$close()
   })
   
-  # download data ####################################################################################################
   
-
+  # download data ####################################################################################################
   
   output$download = downloadHandler(filename = function() { paste('results', 'zip', sep = '.') },
                                     content = function(f) {

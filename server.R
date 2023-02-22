@@ -134,8 +134,14 @@ shinyServer(function(input, output, session) {
       layers = sapply(1:length(isoline_sequence), function(x) {
         progress$status$inc(amount = 1/length(isoline_sequence),
                             message = paste0('Processing request ', x, ' of ', length(isoline_sequence)))
-        isoline(str_remove(input$origin, ' '), departure = departure,
-                range = isoline_sequence[x], mode = mode)
+        
+        tryCatch(isoline(str_remove(input$origin, ' '), departure = departure,
+                range = isoline_sequence[x], mode = mode),
+                error=function(e){
+                  progress$status$set(message = 'API request failed !')
+                  Sys.sleep(1)
+                }
+        )
       })
 ############################################################
 ## Got response from API as a spatial polygons Dataframe
@@ -188,8 +194,8 @@ shinyServer(function(input, output, session) {
         
         
       } else {
-        request_error = layers[sapply(layers, class) != 'SpatialPolygonsDataFrame'] %>% unlist() %>% unique()
-        error_message(session, tags$span('Isoline API failed with the following error: ', request_error))
+        request_error = HTML("<b>API request failed. Check your API key file and your API usage limit and retry</b>")
+        error_message(session, tags$span('Isoline API failed with the following error : ', request_error))
       }
       
     } else {

@@ -22,8 +22,7 @@ isoline = function(origin, departure, range, mode) {
     formatted_origin = str_split(origin,",")[[1]] %>% as.numeric()
     options(digits = 12)
     
-    departure_search <-
-      make_search(id = paste0("travel time from ",origin),
+    departure_search <-make_search(id = paste0("travel time from ",origin),
                   departure_time = formatted_departure,
                   travel_time = range,
                   coords = list(lat = formatted_origin[1], lng = formatted_origin[2]),
@@ -33,7 +32,8 @@ isoline = function(origin, departure, range, mode) {
                   )
     
     result <- time_map(departure_searches = departure_search)
-    
+
+
     poly_test<-c()
     nb_shapes <- length(result$contentParsed$results[[1]]$shapes)
     

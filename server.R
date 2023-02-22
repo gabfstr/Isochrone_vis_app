@@ -231,7 +231,7 @@ shinyServer(function(input, output, session) {
     results$data = list()
     updateTextInput(session, 'origin', value = '')
     leafletProxy('map') %>% clearShapes() %>% clearControls()
-    shinyjs::hide('clear_panel')
+    #shinyjs::hide('clear_panel')
     shinyjs::hide('download')
   })
   

@@ -113,16 +113,16 @@ shinyServer(function(input, output, session) {
     progress$status = Progress$new(session)
     progress$status$set(message = 'Validating inputs...')
     Sys.sleep(1)
-
+    
     
     # validate inputs
     is_valid = validate_inputs(session, input$origin, input$departure, input$min, input$max, input$step)
     #is_valid=TRUE
     
-############################################################
-## Isochrones computation
-############################################################
-   
+    ############################################################
+    ## Isochrones computation
+    ############################################################
+    
     if(is_valid) {
       
       progress$status$set(message = 'Requesting...')
@@ -136,19 +136,19 @@ shinyServer(function(input, output, session) {
                             message = paste0('Processing request ', x, ' of ', length(isoline_sequence)))
         
         tryCatch(isoline(str_remove(input$origin, ' '), departure = departure,
-                range = isoline_sequence[x], mode = mode),
-                error=function(e){
-                  progress$status$set(message = 'API request failed !')
-                  Sys.sleep(1)
-                }
+                         range = isoline_sequence[x], mode = mode),
+                 error=function(e){
+                   progress$status$set(message = 'API request failed !')
+                   Sys.sleep(1)
+                 }
         )
       })
-############################################################
-## Got response from API as a spatial polygons Dataframe
-## Layers for each range, for each layer mutliple shells 
+      ############################################################
+      ## Got response from API as a spatial polygons Dataframe
+      ## Layers for each range, for each layer mutliple shells 
       # (isochrones with holes / islands)
-## Now display of the isochrnes on the map
-############################################################
+      ## Now display of the isochrnes on the map
+      ############################################################
       
       # To access an isochrone : 
       #print(layers[[1]]@polygons)
@@ -158,7 +158,7 @@ shinyServer(function(input, output, session) {
         colors = magma(length(layers), end = 0.8) %>% str_trunc(width = 7, side = 'right', ellipsis = '')
         sapply(length(layers):1, function(x) {
           leafletProxy('map') %>% addPolygons(data = layers[[x]], weight = 2, color = colors[x],
-                                              opacity = 0.6, fillOpacity = 0.3, fillColor = colors[x],
+                                              opacity = 0.3, fillOpacity = 0.3, fillColor = colors[x],
                                               smoothFactor = 0,
                                               highlightOptions = highlightOptions(weight = 3),
                                               popup = paste0("Range : ",seq(input$min, input$max, input$step)[x],
@@ -219,14 +219,14 @@ shinyServer(function(input, output, session) {
                                         writeOGR(out, dsn = tmp, layer = paste0('isochrone_', x), driver = 'ESRI Shapefile', overwrite = TRUE)
                                       })
                                       zip_files = list.files(tmp, pattern = '.*\\.(shp|dbf|prj|shx)$')
-
+                                      
                                       
                                       path=file.path(tmp,"results.csv")
                                       write_csv(data.frame(statistics$data_csv), file=path)
-
+                                      
                                       zip_files = paste0(tmp, '/', zip_files)
                                       zip_files = append(zip_files,path)
-
+                                      
                                       zip(zipfile = f, files = zip_files, flags = '-j')
                                     },
                                     contentType = 'application/zip'

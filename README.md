@@ -22,7 +22,7 @@ The menu allows the user to select
 - **Departure time** : takes into account traffic and scheduled public transport 
 - **Time range** of the desired isochrones : minimum and maximum range representing respectively the smallest and largest isochrones, and interval size the intervals in minutes between these ranges for which the user wants isochrones. 
 
-Once these parameters are set, use the **request ischrones** button to generate the visualisation.
+Once these parameters are set, use the **request isolines** button to generate the visualisation.
 
 The app will generate and plot the desired isochrones as seen in the image below. Isochrones are often composed of multiple polygons due to some areas being inaccessible during the set time : the area of each island, the total area of the isochrone and its associated time range are detailed when clicking on it.
 

@@ -1,13 +1,14 @@
 # Isochrone Project - Communicating Data & Statistics
 
+## [Online version](http://gabriel-fiastre.shinyapps.io/Isochrone-vis-app?_ga=2.149344309.2094542299.1677432014-1284112226.1677265408))
+
 ## Description
 
 Isochrones delimit lines of equal travel time from an origin. They are important to investigate how well connected a location is and have many applications, from improving transport networks to any location-based optimisation. This project presents a visualization tool that plots isochrones from an origin using a set of user-defined parameters and allows the export of the data as a basis for statistics. The isochrones are generated using the [TravelTime](https://traveltime.com/) API. The visualization is largely inspired by [Bethany Byollin's work](https://github.com/byollin/Isolines), but uses an more precise API and provides additional data and computed statistics to the user such as the area of the isochrones.
 
 
 ## Usage
-The app is available online [here](http://gabriel-fiastre.shinyapps.io/Isochrone-vis-app?_ga=2.149344309.2094542299.1677432014-1284112226.1677265408)
-It can also be run locally using the code provided in the repository : 
+The app is available online [here](http://gabriel-fiastre.shinyapps.io/Isochrone-vis-app?_ga=2.149344309.2094542299.1677432014-1284112226.1677265408). It can also be run locally using the code provided in the repository : 
 * put your API key information (a free key can be obtained from the Traveltime website [here](https://traveltime.com/features/distance-matrix#sign-up-form)) in the api_keys.json file
 * run the server.R file 
 * Tadam. This will generate a window presenting a map and the user menu on the left, as seen in the picture below. 

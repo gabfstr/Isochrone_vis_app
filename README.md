@@ -30,7 +30,7 @@ The app will generate and plot the desired isochrones as seen in the image below
 
 ## Results
 The data and computed statistics can also be exported using the **download results** button that appears once isochrones are generated. 
-The data is exported as a zip file including the geographical data of the generated isochrones (**Spatial Polygon**), its parameters (**Isochrone ID**, **Origin**, **Transport mode**, **Departure time**, **Time range**, ...) and the computed statistics. For now only the areas are supported but we are working on adding other metrics, in particular to quantify the symmetry or area distribution of isochrones.
+The data is exported as a zip file including the geographical data of the generated isochrones (**Spatial Polygon**), its parameters (**isochrone ID**, **origin**, **transport mode**, **departure time**, **time range**, ...) and the computed statistics. For now only the areas are supported but we are working on adding other metrics, in particular to quantify the symmetry or area distribution of isochrones.
 
 The zip file contains 4 files in different formats containing the geographical data of the polygons composing the isochrones, and an additional results file in csv format with the isochrone parameters and statistics, each row representing an island.
 

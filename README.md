@@ -1,6 +1,6 @@
 # Isochrone Project - Communicating Data & Statistics
 
-## -> [Isochrone visualization App - Online version](http://gabriel-fiastre.shinyapps.io/Isochrone-vis-app?_ga=2.149344309.2094542299.1677432014-1284112226.1677265408)
+## --> [Isochrone visualization App - Online version](http://gabriel-fiastre.shinyapps.io/Isochrone-vis-app?_ga=2.149344309.2094542299.1677432014-1284112226.1677265408)
 
 ## Description
 

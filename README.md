@@ -17,12 +17,12 @@ The app is available online [here](http://gabriel-fiastre.shinyapps.io/Isochrone
 
 
 The menu allows the user to select 
-- *Origin* of the isochrone : latitude-longitude coordinates or by clicking on the map
-- *Mode of transport* : among driving, public transport, cycling, and walking
-- *Departure time* : takes into account traffic and scheduled public transport 
-- *Time range* of the desired isochrones : minimum and maximum range representing respectively the smallest and largest isochrones, and interval size the intervals in minutes between these ranges for which the user wants isochrones. 
+- **Origin** of the isochrone : latitude-longitude coordinates or by clicking on the map
+- **Mode of transport** : among driving, public transport, cycling, and walking
+- **Departure time** : takes into account traffic and scheduled public transport 
+- **Time range** of the desired isochrones : minimum and maximum range representing respectively the smallest and largest isochrones, and interval size the intervals in minutes between these ranges for which the user wants isochrones. 
 
-Once these parameters are set, use the *request ischrones* button to generate the visualisation.
+Once these parameters are set, use the **request ischrones** button to generate the visualisation.
 
 The app will generate and plot the desired isochrones as seen in the image below. Isochrones are often composed of multiple polygons due to some areas being inaccessible during the set time : the area of each island, the total area of the isochrone and its associated time range are detailed when clicking on it.
 
@@ -30,11 +30,12 @@ The app will generate and plot the desired isochrones as seen in the image below
 
 ## Results
 The data and computed statistics can also be exported using the *download results* button that appears once isochrones are generated. 
-The data is exported as a zip file including the geographical data of the generated isochrones (*Spatial Polygon*), its parameters (*Isochrone ID*, *Origin*, *Transport mode*, *Departure time*, *Time range*, ...) and the computed statistics. For now only the area is supported but we are working on adding other metrics, in particular to quantify the symmetry or area distribution of isochrones.
+The data is exported as a zip file including the geographical data of the generated isochrones (**Spatial Polygon**), its parameters (**Isochrone ID**, **Origin**, **Transport mode**, **Departure time**, **Time range**, ...) and the computed statistics. For now only the area is supported but we are working on adding other metrics, in particular to quantify the symmetry or area distribution of isochrones.
+
 The zip file contains 4 files in different formats containing the geographical data of the polygons composing the isochrones, and an additional results file in csv format with isochrone parameters and statistics, each row representing a polygon composing an isochrone.
 
 
 ## Authors
-We are [Gabriel Fiastre] & [Shane Hoeberichts] , Machine learning & applied statistics students at Paris Dauphine & ENS (MASH master). This shiny app was part of a data visualization project for the course "Communicating Data & statistics" with [Andrew Gelman]. We would like to thank Bethany Yollin for her work as all of this work is largely inspired from her previous version.
+We are [Gabriel Fiastre](https://www.linkedin.com/in/gabriel-fiastre-4b5085184/) & [Shane Hoeberichts](https://www.linkedin.com/in/shane-hoeberichts-b249001b8/) , Machine learning & applied statistics students at Paris Dauphine & ENS (MASH master). This shiny app was part of a data visualization project for the course "Communicating Data & statistics" with [Andrew Gelman](http://www.stat.columbia.edu/~gelman/). We would like to thank [Bethany Yollin](https://github.com/byollin) as all of this work is largely inspired from her previous version.
 
 

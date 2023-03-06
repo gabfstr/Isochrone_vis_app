@@ -13,7 +13,7 @@ The app is available online [here](http://gabriel-fiastre.shinyapps.io/Isochrone
 * Run the server.R file 
 * Tadam. This will generate a window presenting a map and the user menu on the left, as seen in the picture below. 
 
-![image](https://user-images.githubusercontent.com/73693706/220354645-8d04dccf-9ca8-4e46-a2bc-ffa989b5252c.png)
+<img width="1470" alt="Capture d’écran 2023-02-28 à 00 06 26" src="https://user-images.githubusercontent.com/88781950/223112386-8955d3ea-7bd4-4390-b3b6-dc82b3d42e49.png">
 
 
 The menu allows the user to select :
@@ -26,7 +26,7 @@ Once these parameters are set, use the **request isolines** button to generate t
 
 The app will generate and plot the desired isochrones as seen in the image below. Isochrones are often composed of multiple polygons due to some areas being inaccessible during the set time (for instance here with the Seine splitting the isochrones in two parts). These polygons forming an isochrone are called **islands**. The area of each island, the total area of the isochrone and its associated time range are detailed when clicking on it.
 
-![image](https://user-images.githubusercontent.com/73693706/220373966-293b3597-e88c-47e8-a643-362681c73948.png)
+<img width="1470" alt="Capture d’écran 2023-02-28 à 00 10 36" src="https://user-images.githubusercontent.com/88781950/223112298-80b66e5f-7cb7-4387-bfcd-af9a1720801f.png">
 
 ## Results
 The data and computed statistics can also be exported using the **download results** button that appears once isochrones are generated. 

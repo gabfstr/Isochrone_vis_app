@@ -26,7 +26,7 @@ Once these parameters are set, use the **request isolines** button to generate t
 
 The app will generate and plot the desired isochrones as seen in the image below. Isochrones are often composed of multiple polygons due to some areas being inaccessible during the set time (for instance here with the Seine splitting the isochrones in two parts). These polygons forming an isochrone are called **islands**. The area of each island, the total area of the isochrone and its associated time range are detailed when clicking on it.
 
-<img width="1470" alt="Capture d’écran 2023-02-28 à 00 10 36" src="https://user-images.githubusercontent.com/88781950/223112298-80b66e5f-7cb7-4387-bfcd-af9a1720801f.png">
+<img width="1469" alt="Capture d’écran 2023-03-06 à 13 42 28" src="https://user-images.githubusercontent.com/88781950/223113612-46b84567-4ae4-4fcb-8311-1cc0ac346df3.png">
 
 ## Results
 The data and computed statistics can also be exported using the **download results** button that appears once isochrones are generated. 

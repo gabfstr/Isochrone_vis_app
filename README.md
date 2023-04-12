@@ -34,6 +34,9 @@ The data is exported as a zip file including the geographical data of the genera
 
 The zip file contains 4 files in different formats containing the geographical data of the polygons composing the isochrones, and an additional results file in csv format with the isochrone parameters and statistics, each row representing an island.
 
+### This data allows computation of basic statistics with many applications.
+<img width="500" alt="plot_20min_transport" src=https://user-images.githubusercontent.com/88781950/231594915-60599f53-12ea-403b-8d96-bb6f625dd085.png>
+Here is an (oversimplistic) example showing the evolution during a working day of the area reachable in 20min of public transports from the center of Paris.
 
 ## Authors
 We are [Gabriel Fiastre](https://www.linkedin.com/in/gabriel-fiastre-4b5085184/) & [Shane Hoeberichts](https://www.linkedin.com/in/shane-hoeberichts-b249001b8/) , Machine learning & applied statistics students at Paris Dauphine & ENS (MASH master). This shiny app was part of a data visualization project for the course "Communicating Data & statistics" with [Andrew Gelman](http://www.stat.columbia.edu/~gelman/). We would like to thank [Bethany Yollin](https://github.com/byollin) as all of this work is largely inspired from her previous version.
